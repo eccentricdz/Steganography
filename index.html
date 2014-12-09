@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Steganography</title>
+<link rel="stylesheet" href="font-awesome.min.css" >
+<link rel="stylesheet" href="style.css" > 
+<script src="jquery-1.8.2.js"></script>
+<script src="prefixfree.min.js"></script>
+<script src="stegano.js"></script>
+</head>
+
+<body>
+
+	<div id="dnd">
+    <input type="file" name="upload-img" id="upload"> 
+    
+    	<div id="browse">
+    		<i class="icon-picture icon-2x icon-align-center"></i>
+    		<p id="drop">Drag and drop your image</p>
+        </div>
+        
+        <div id="post-upload">
+        	
+           	<div id="image">
+            	<!--<img src="joker.jpg" id="thumb">-->
+                <div id="shadow"></div>
+            </div>
+            <div id="options">
+            <form id="form">
+            <input type="text" placeholder="Enter your message" id="message" >
+            </form>
+            <p id="dash">/</p>
+            <button id="decrypt" class="btn">decrypt</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <p id="footer">
+            <span id="stegano">stegano</span><span id="graphy">graphy</span>
+        </p>
+    </footer>
+    
+</body>
+</html>
