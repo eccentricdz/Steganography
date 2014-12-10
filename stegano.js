@@ -10,11 +10,22 @@ $(document).ready(function(){
 		else
 		encrypt(msg);
 		});
+		
+		$('#encrypt').click(function(){
+			var msg = $('#message').val();
+		if(msg==""){
+			alertify("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Message field is empty!");
+		return;}
+		else
+		encrypt(msg);
+			});
 	
 		$('#decrypt').click(function(){decrypt()});
 		$('#browse').on('click', function(){
 			$('#upload').trigger('click');
 										});
+										
+			
 				var dnd = document.getElementById('dnd');						
 	function handleFileSelect(evt)
 {
@@ -94,6 +105,8 @@ $(document).ready(function(){
 	inp.addEventListener('change', handleFileSelect, false);
 	
 	function encrypt(msg){
+		
+		
 		var H,W;
 		var src = document.getElementById('thumb').getAttribute('src');
 		var myImage =document.createElement('img');
@@ -193,6 +206,9 @@ $(document).ready(function(){
 		ctx.putImageData(pixels, 0, 0);
 		var result = canvas.toDataURL();
 		$('#thumb').hide('slow').attr('src', result).show('slow');
+
+		
+		alertify("<i class='icon-check'></i>&nbsp;&nbsp;Encryption successful! Right-click on the image to download.");
 		
 		//alert('encryption complete');
 		
@@ -246,7 +262,7 @@ $(document).ready(function(){
 					}*/
 					
 					if(currChar==128){
-						alert(msg);
+						alertify("<i class='icon-align-right'></i>&nbsp;&nbsp;"+msg);
 					decrypting = false;}
 					else{
 						//alert(currChar);
@@ -265,7 +281,7 @@ $(document).ready(function(){
 			
 		}
 	else{
-		alert('The given image does not contain any message!');return false;
+		alertify('<i class="icon-exclamation-sign"></i>&nbsp;&nbsp;The given image does not contain any message!');return false;
 		}
 		
 	}
@@ -287,6 +303,12 @@ $(document).ready(function(){
 	
 	function getAverage(i, colordata, W){
 		return Math.floor((colordata[i-4]+colordata[i+4]+colordata[i+4*W]+colordata[i-4*W])/4);
+	}
+	
+	function alertify(myMsg)
+	{
+		$('#dash').html(myMsg);
+		
 	}
 	
 	

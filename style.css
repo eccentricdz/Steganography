@@ -67,6 +67,10 @@ text-align: center;
 color: #7d6c60;
 }
 
+i{
+	transition: all 0.2s;
+}
+
 footer{
 	position: fixed;
 	bottom: 40px;
@@ -135,9 +139,8 @@ transform-style: preserve-3d;
 
 #dash{
 	width: 450px;
-	margin: 50px;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.1em;
 	margin-left: 0;
 	
 }
@@ -152,10 +155,14 @@ transform-style: preserve-3d;
 		font-family:'nexa-b';
 		color: #7d6c60;
 		font-size:1.2em;
-		margin-left:43%;
 		transform:translateX(-50%);
 		cursor: pointer;
+		margin: 30px 43%;
 		
+}
+
+.btn:hover i{
+	color: #ff730c;
 }
 
 @-webkit-keyframes swirl{
