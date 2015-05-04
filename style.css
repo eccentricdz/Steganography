@@ -39,6 +39,10 @@ body{
 	transition: all 0.5s;
 }
 
+#dash{
+	word-wrap: break-word;
+}
+
 #browse{
 	position: relative;
 top: 37%;
@@ -59,7 +63,7 @@ color: #7d6c60;
 
 }
 
-.icon-picture{
+.i-picture{
 	top: 37%;
 margin-left: 50%;
 transform: translateX(-50%);
@@ -123,7 +127,7 @@ transform-style: preserve-3d;
 	font-size:1.4em;
 	background: none;
 	font-family: 'nexa-l';
-	margin-top: 14%;
+	margin-top: 10%;
 	outline: none;
 	box-shadow:none;
 	border: none;
@@ -137,7 +141,7 @@ transform-style: preserve-3d;
 		border-color: #ff730c;
 	}
 
-#dash{
+.sub-text{
 	width: 450px;
 	text-align: center;
 	font-size: 1.1em;
@@ -145,20 +149,28 @@ transform-style: preserve-3d;
 	
 }
 
+#or{
+	padding-top: 15px;
+}
+
 .btn{
 		background: none;
-		outline: none;
-		border: 3px solid #7d6c60;
-		width: 230px;
-		height: 60px;
-		text-transform:uppercase;
-		font-family:'nexa-b';
-		color: #7d6c60;
-		font-size:1.2em;
-		transform:translateX(-50%);
-		cursor: pointer;
-		margin: 30px 43%;
-		
+  outline: none;
+  border: 2px solid #7d6c60;
+  width: 315px;
+  height: 53px;
+  text-transform: uppercase;
+  font-family: 'nexa-b';
+  color: #7d6c60;
+  font-size: 1em;
+  transform: translateX(-50%);
+  cursor: pointer;
+  margin: 25px 43%;		
+}
+
+#select_secret_file{
+	margin: 15px 43%;
+	border-radius: 100px;
 }
 
 .btn:hover i{
@@ -170,7 +182,7 @@ transform-style: preserve-3d;
 	to{transform: translateX(-50%) rotateY(10deg);}
 }
 
-#thumb
+#image>img
 {
 	position: relative;
 	height : 300px;
@@ -198,4 +210,32 @@ box-shadow: 0 0 17px 2px rgba(10,10,10,0.1);
 margin-left: 85px;
 opacity: 0.7;
 }
+
+#hide_file{
+	display : none;
+}
+
+#file-hide{
+	width: 300px;
+	margin: 20px auto;
+}
+
+#file_icon{
+	padding-right: 20px;
+	color: #7d6c60;
+}
+
+#file_info{
+	display: inline-block;
+	color: #7d6c60;
+}
+
+#file_name{
+	font-size: 1.2em;
+}
+
+#file_size{
+	font-size: 0.9em;
+}
+
 

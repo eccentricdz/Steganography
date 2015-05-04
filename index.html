@@ -16,7 +16,7 @@
     <input type="file" name="upload-img" id="upload"> 
     
     	<div id="browse">
-    		<i class="icon-picture icon-2x icon-align-center"></i>
+    		<i class="icon-picture i-picture icon-2x icon-align-center"></i>
     		<p id="drop">Drag and drop your image</p>
         </div>
         
@@ -28,10 +28,22 @@
             </div>
             <div id="options">
             <form id="form">
-            <input type="text" placeholder="Enter your message" id="message" >
+            <input type="text" class="a" placeholder="Enter your message" id="message" >
+            <p id="or" class="sub-text a">or</p>
+            <input type="file" name="hide_file" id="hide_file" >
             </form>
+            <button class="btn a" id="select_secret_file"><i class="icon-file"></i>&nbsp;&nbsp;select a file</button>
+            <div id="file-hide">
+               <span><i class="icon-3x" id="file_icon"></i></span>
+               <span>
+                   <div id="file_info">
+                       <p id="file_name">Random file name</p>
+                       <p id="file_size">12345 bytes</p>
+                   </div>
+               </span>
+            </div>
             <button id="encrypt" class="btn"><i class="icon-lock"></i>&nbsp;&nbsp;encrypt</button>
-            <p id="dash">/</p>
+            <p id="dash" class="sub-text">/</p>
             <button id="decrypt" class="btn"><i class="icon-unlock"></i>&nbsp;&nbsp;decrypt</button>
             </div>
         </div>

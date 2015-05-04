@@ -1,10 +1,15 @@
 // JavaScript Document
 $(document).ready(function(){
-	
+	var fileHide = false;var fileSrc;
 	$('#post-upload').hide();
+	$('#file-hide').hide();
 	$('#form').submit(function(e){
 		e.preventDefault();
 		var msg = $('#message').val();
+		if(fileHide==true){
+			encrypt(fileSrc)
+			return;
+		}
 		if(msg=="")
 		return;
 		else
@@ -12,10 +17,13 @@ $(document).ready(function(){
 		});
 		
 		$('#encrypt').click(function(){
+			if(fileHide==true){
+			encrypt(fileSrc);
+			return;
+		}
 			var msg = $('#message').val();
-		if(msg==""){
+		if(msg=="")
 			alertify("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Message field is empty!");
-		return;}
 		else
 		encrypt(msg);
 			});
@@ -24,11 +32,16 @@ $(document).ready(function(){
 		$('#browse').on('click', function(){
 			$('#upload').trigger('click');
 										});
+
+		$('#select_secret_file').click(function(){
+			$('#hide_file').trigger('click');
+		})
 										
 			
 				var dnd = document.getElementById('dnd');						
 	function handleFileSelect(evt)
 {
+	var target = $(event.target).attr('id');
 	evt.stopPropagation();
     evt.preventDefault();
 		if(evt.dataTransfer)
@@ -39,7 +52,7 @@ $(document).ready(function(){
     var output = files[0];
 	this.style.boxShadow = 'none';
 	
-	if (!output.type.match('image.*')) {
+	if (!output.type.match('image.*')&&target=='upload') {
         alert("Unsupported File Format");
 		return false;
       }
@@ -51,15 +64,43 @@ $(document).ready(function(){
 	{
 		return function(e)
 		{
-			var img = document.createElement('img');
-			img.setAttribute('id','thumb');			
+			
+
+			if(target=="hide_file"){
+				var ico;
+				fileHide = true;
+
+				fileSrc = e.target.result;
+				if(output.type.match('image.*'))
+			ico = 'icon-picture';
+			else if(output.type.match('audio.*'))
+				ico = 'icon-headphones';
+			else if(output.type.match('video.*'))
+				ico = 'icon-film';
+			else
+				ico = 'icon-file';
+
+			$('#file_icon').addClass(ico);
+			$('#file_name').text(output.name);
+			$('#file_size').text(output.size+' bytes');
+			$('#file-hide').show();
+			$('.a').hide();
+		}
+			else{
+				var img = document.createElement('img');
+				//<-------		
 			img.src = e.target.result;
 			var imge = document.getElementById('image');
+			img.setAttribute('id','thumb');
 			$('#thumb').remove();
 			imge.appendChild(img);
+				}
+			//<--------
+			
+			
 			
 			$('#browse').hide();
-			$('#post-upload').show(250);
+			$('#post-upload').show(250);//<------- 
 		};
 	})(output);
 	
@@ -103,10 +144,14 @@ $(document).ready(function(){
 	
 	var inp = document.getElementById('upload');
 	inp.addEventListener('change', handleFileSelect, false);
+
+	var hid = document.getElementById('hide_file');
+	hid.addEventListener('change', handleFileSelect, false);
 	
 	function encrypt(msg){
 		
-		
+		console.log(msg);
+		//$('.icon-lock').removeClass('icon-class').addClass('icon-spinner').addClass('icon-spin');
 		var H,W;
 		var src = document.getElementById('thumb').getAttribute('src');
 		var myImage =document.createElement('img');
@@ -192,9 +237,12 @@ $(document).ready(function(){
 			i++;
 		}*/
 			i++;
+			console.log(i+" ("+pix(i)+")");
 			if(W-(pix(i)%W)<=(x+1))
 			{
-				i = (Math.floor(pix(i)/W)+2)*W+4;
+					console.log('changing line to :'+(pix(i)/W));
+				i = (Math.ceil(pix(i)/W)+2)*W*4+4;
+			
 				}
 				else
 				i = i+(4*(x-1));
@@ -262,17 +310,22 @@ $(document).ready(function(){
 					}*/
 					
 					if(currChar==128){
+						if(msg.indexOf('data')!=0)
 						alertify("<i class='icon-align-right'></i>&nbsp;&nbsp;"+msg);
+					else
+						alertify("<a href="+msg+" download><i class='icon-download'></i>&nbsp;&nbsp;Download the file</a>");
 					decrypting = false;}
 					else{
 						//alert(currChar);
 							msg+=String.fromCharCode(currChar);
+							console.log(i+" ("+pix(i)+") : "+msg);
 						}
 						
 						i++;
 						if(W-(pix(i)%W)<=(x+1))
 			{
-				i = (Math.floor(pix(i)/W)+2)*W+4;
+					i = (Math.ceil(pix(i)/W)+2)*W*4+4;
+				console.log("moving to next line");
 				}
 				else
 				i = i+(4*(x-1));
