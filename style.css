@@ -173,7 +173,7 @@ transform-style: preserve-3d;
 	border-radius: 100px;
 }
 
-.btn:hover i{
+.btn:hover i, #dload:hover i{
 	color: #ff730c;
 }
 
@@ -217,7 +217,7 @@ opacity: 0.7;
 
 #file-hide{
 	width: 300px;
-	margin: 20px auto;
+	margin: 90px auto;
 }
 
 #file_icon{
@@ -231,11 +231,16 @@ opacity: 0.7;
 }
 
 #file_name{
-	font-size: 1.2em;
+	font-family: 'nexa-b';
+  font-size: 1.3em;
 }
 
 #file_size{
 	font-size: 0.9em;
 }
 
-
+#dload{
+	  font-family: nexa-b;
+  text-decoration: none;
+  color: #7d6c60;
+}

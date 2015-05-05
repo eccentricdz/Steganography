@@ -313,7 +313,7 @@ $(document).ready(function(){
 						if(msg.indexOf('data')!=0)
 						alertify("<i class='icon-align-right'></i>&nbsp;&nbsp;"+msg);
 					else
-						alertify("<a href="+msg+" download><i class='icon-download'></i>&nbsp;&nbsp;Download the file</a>");
+						alertify("<a href="+msg+" download id='dload'><i class='icon-download'></i>&nbsp;&nbsp;Download the file</a>");
 					decrypting = false;}
 					else{
 						//alert(currChar);
